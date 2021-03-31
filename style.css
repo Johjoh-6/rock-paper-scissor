@@ -1,0 +1,67 @@
+body {
+    margin: 0 auto;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(#fff, #000);
+    background-repeat: no-repeat;
+   
+    
+    
+}
+header{
+    width: 100%;
+    height: 20vh;
+    text-align: center;
+    margin-top: 5vh;
+}
+#game {
+    margin-bottom: 5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+#left {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 20rem;
+    height: 10rem;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    margin-right: 2.5%;
+}
+#left h2 {
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+#left h2::after {
+    content: attr(data-score);
+    position: absolute;
+    top: 2.5rem;
+    left: 50%;
+
+}
+#right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 20rem;
+    height: 10rem;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    margin-left: 2.5%;
+}
+#right h2 {
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+#right h2::after {
+    content: attr(data-score);
+    position: absolute;
+    top: 2.5rem;
+    left: 50%;
+}
