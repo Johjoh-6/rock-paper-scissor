@@ -1,6 +1,7 @@
 // score
 const playerScore = document.getElementById('player');
 const robotScore = document.getElementById('robot');
+const textArea = document.getElementById('text-area');
 // button player
 const rockButton = document.getElementById('rock');
 const paperButton = document.getElementById('paper');
@@ -26,6 +27,7 @@ function endOfTheGame() {
     if (playerScore.dataset.score == 5 || robotScore.dataset.score == 5) {
         refreshButton.classList.remove('hiden');
         refreshButton.addEventListener('click', reset);
+        textArea.innerText = '';
         return true;
     } 
 }
@@ -100,14 +102,17 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "paper" && computerSelection === "scissors") ||
         (playerSelection === "scissors" && computerSelection === "rock") ||
         (robotScore <= 5 || playerScore <= 5)) {
+            textArea.innerHTML = 'You Loose, ' + computerSelection + ' beats ' + playerSelection +'.';
         return -1;
     } else if (
         (playerSelection == "scissors" && computerSelection == "paper") ||
         (playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "paper" && computerSelection == "rock") ||
         (robotScore <= 5 || playerScore <= 5)) {
+            textArea.innerHTML ='You Win, ' + playerSelection + ' beats ' + computerSelection +'.';
         return 1;
     } else {
+        textArea.innerHTML = 'Egality, the ' + playerSelection + ' and ' + computerSelection +' are the same.';
         return 0;
     }
 

@@ -83,6 +83,11 @@ img {
 #game h3 {
     text-align: center;
 }
+#text-area {
+    text-align: center;
+    color: #fff;
+    padding: 0rem 2rem 0rem 2rem;
+}
 #refresh {
     text-align: center;
     color: #fff;
