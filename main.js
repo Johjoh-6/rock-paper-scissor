@@ -4,6 +4,12 @@ playerScore.dataset.score = 0;
 const robotScore = document.querySelector('#robot');
 robotScore.dataset.score= 0;
 
+// Limit score at 5
+const newGame = document.createElement('div');
+while (playerScore.dataset.score === 5 || robotScore.dataset.score === 5) {
+    newGame.textContent = `Play again`
+    disable();
+}
 
 // button player
 const rockButton = document.querySelector('#rock');
