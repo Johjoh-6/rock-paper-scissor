@@ -2,6 +2,7 @@
 const playerScore = document.getElementById('player');
 const robotScore = document.getElementById('robot');
 const textArea = document.getElementById('text-area');
+
 // button player
 const rockButton = document.getElementById('rock');
 const paperButton = document.getElementById('paper');
@@ -12,14 +13,15 @@ const rockDiv = document.getElementById('rock-fixe');
 const paperDiv = document.getElementById('paper-fixe');
 const scissorsDiv = document.getElementById('scissors-fixe');
 
-
 // reset
 const refreshButton = document.getElementById('refresh');
+const result = document.getElementById('top-head');
 function reset() {
     playerScore.dataset.score = 0;
     robotScore.dataset.score = 0;
     removeShiny();
     refreshButton.classList.add('hiden');
+    result.innerText = 'The winner is first to reach 5 points';
 }
 reset();
 // Limit score at 5
@@ -28,8 +30,13 @@ function endOfTheGame() {
         refreshButton.classList.remove('hiden');
         refreshButton.addEventListener('click', reset);
         textArea.innerText = '';
+        if (playerScore.dataset.score == 5) {
+            result.innerText = 'You Win ' + playerScore.dataset.score + ' to ' + robotScore.dataset.score + ' !';
+        } if (robotScore.dataset.score == 5) {
+            result.innerText = 'You Loose ' + robotScore.dataset.score + ' to ' + playerScore.dataset.score + ' !';
+        }
         return true;
-    } 
+    }
 }
 
 // Selection player
@@ -52,8 +59,6 @@ scissorsButton.addEventListener("click", () => {
     play('scissors');
 
 })
-
-
 
 // Function for draw an random play from the bot
 function botPlay() {
@@ -83,8 +88,6 @@ function shinyBot(computerSelection) {
     }
 }
 
-
-
 //clear the style
 function removeShiny() {
     rockDiv.classList.remove('selected');
@@ -95,32 +98,29 @@ function removeShiny() {
     scissorsButton.classList.remove('selected');
 }
 
-
+// Rule of the game
 function playRound(playerSelection, computerSelection) {
     if (
         (playerSelection === "rock" && computerSelection === "paper") ||
         (playerSelection === "paper" && computerSelection === "scissors") ||
         (playerSelection === "scissors" && computerSelection === "rock") ||
         (robotScore <= 5 || playerScore <= 5)) {
-            textArea.innerHTML = 'You Loose, ' + computerSelection + ' beats ' + playerSelection +'.';
+        textArea.innerHTML = 'You Loose, ' + computerSelection + ' beats ' + playerSelection + '.';
         return -1;
     } else if (
         (playerSelection == "scissors" && computerSelection == "paper") ||
         (playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "paper" && computerSelection == "rock") ||
         (robotScore <= 5 || playerScore <= 5)) {
-            textArea.innerHTML ='You Win, ' + playerSelection + ' beats ' + computerSelection +'.';
+        textArea.innerHTML = 'You Win, ' + playerSelection + ' beats ' + computerSelection + '.';
         return 1;
     } else {
-        textArea.innerHTML = 'Egality, the ' + playerSelection + ' and ' + computerSelection +' are the same.';
+        textArea.innerHTML = 'Egality, the ' + playerSelection + ' and ' + computerSelection + ' are the same.';
         return 0;
     }
-
 }
 
-
-
-
+// play game
 function play(playerSelection) {
     const computerSelection = botPlay();
     console.log(computerSelection);
@@ -130,7 +130,6 @@ function play(playerSelection) {
 }
 
 //result
-
 function updateResult(result) {
     if (result == 0) return;
     else if (result == 1) {
