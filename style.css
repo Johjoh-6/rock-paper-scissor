@@ -83,3 +83,14 @@ img {
 #game h3 {
     text-align: center;
 }
+#refresh {
+    text-align: center;
+    color: #fff;
+    border-radius: 10px;
+    border: solid 2px white;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    
+}
+.hiden {
+    display: none;
+}
