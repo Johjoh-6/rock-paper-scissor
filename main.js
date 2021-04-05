@@ -1,8 +1,8 @@
 // score
 const playerScore = document.querySelector('#player');
-playerScore.dataset.score = 1;
+playerScore.dataset.score = 0;
 const robotScore = document.querySelector('#robot');
-robotScore.dataset.score= 5;
+robotScore.dataset.score= 0;
 
 
 // button player
@@ -15,9 +15,6 @@ const rockDiv = document.querySelector('#rock-fixe');
 const paperDiv = document.querySelector('#paper-fixe');
 const scissorsDiv = document.querySelector('#scissors-fixe');
 
-// game selector
-// const playerSelection = a;
-const computerSelection = botPlay();
 
 // Function for draw an random play from the bot
 function botPlay() {
@@ -35,24 +32,27 @@ function botPlay() {
 function shinyBot(computerSelection) {
     switch (computerSelection) {
         case 'rock':
-        removeShinyBot(computerSelection);
         rockDiv.classList.add('selected');
         break;
     case 'paper': 
-        removeShinyBot(computerSelection);
         paperDiv.classList.add('selected');
         break;
-    case 'scisssor':
-        removeShinyBot(computerSelection);
+    case 'scissors':
         scissorsDiv.classList.add('selected');
         break;
     }
 }
+
+
+
  //clear the style
-function removeShinyBot(computerSelection) {
+function removeShiny() {
     rockDiv.classList.remove('selected');
     paperDiv.classList.remove('selected');
     scissorsDiv.classList.remove('selected');
+    rockButton.classList.remove('selected');
+    paperButton.classList.remove('selected');
+    scissorsButton.classList.remove('selected');
 }
 
 
@@ -62,19 +62,59 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "paper" && computerSelection === "scissors") ||
         (playerSelection === "scissors" && computerSelection === "rock") ||
         (robotScore <= 5 || playerScore <= 5)) {
-            // you lose
+           return -1;
         }
-    if (
+    else if (
         (playerSelection == "scissors" && computerSelection =="paper") ||
         (playerSelection == "rock" && computerSelection =="scissors") ||
         (playerSelection == "paper" && computerSelection =="rock") ||
         (robotScore <= 5 || playerScore <= 5)) {
-            // you win 
+           return 1;
+        }
+        else {
+            return 0;
         }
 
 }
 
-// Player 
+// Selection player
+rockButton.addEventListener("click", ()=> {
+    removeShiny();
+    rockButton.classList.add('selected');
+
+    play('rock');
+})
+paperButton.addEventListener("click", ()=> {
+    removeShiny();
+    paperButton.classList.add('selected');
+    play('paper');
+})
+scissorsButton.addEventListener("click", ()=> {
+    removeShiny();
+    scissorsButton.classList.add('selected');
+    play('scissors');
+})
 
 
-console.log(computerSelection);
+
+
+function play(playerSelection) {
+    const computerSelection = botPlay();
+    console.log(computerSelection);
+    shinyBot(computerSelection);
+  const result = playRound(playerSelection, computerSelection);
+  updateResult(result);
+}
+
+//result
+
+function updateResult(result){
+    if (result ==0) return;
+    else if (result == 1){
+       playerScore.dataset.score = Number( playerScore.dataset.score) + 1;
+  }
+    else if (result == -1){
+        robotScore.dataset.score = Number(robotScore.dataset.score) + 1;  
+  }
+}
+
