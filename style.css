@@ -7,8 +7,9 @@ body {
 }
 header{
     width: 100%;
-    height: 40vh;
+    height: 20vh;
     text-align: center;
+    padding-bottom: 1px;
 }
 header h1 {
     margin: 0;
@@ -24,11 +25,22 @@ header span {
 }
 
 #game {
-    margin-bottom: 5vh;
+    margin-bottom: 2%;
+   height: 80vh;
     width: 100%;
     display: flex;
-    flex-direction: row;
     justify-content: center;  
+    flex-direction: column;
+}
+#player-vs-robot {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+
+}
+#bot-result {
+    display: flex;
+    flex-direction: column;
 }
 #left {
     display: flex;
@@ -37,6 +49,7 @@ header span {
     border-radius: 10px;
     border: 1px solid #fff;
     margin-right: 2.5%;
+    max-height: max-content;
 }
 #left h2 {
     width: 100%;
@@ -57,6 +70,7 @@ header span {
     border-radius: 10px;
     border: 1px solid #fff;
     margin-left: 2.5%;
+    max-height: max-content;
 }
 #right h2 {
     width: 100%;
@@ -115,20 +129,28 @@ header span {
     display: none;
 }
 /* size screen */
-@media screen and (max-width: 760px) {
-    header{
+@media screen and (max-width: 870px) {
+    header {
         height: auto;
     }
+}
+@media screen and (max-width: 760px) {
+   
     #game {
         flex-direction: column;
         max-width: 95%;
         margin: 0 auto;
-}   
+        margin-bottom: 1%;
+        height: auto;
+}  
+#player-vs-robot {
+    flex-direction: column;
+} 
 header h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
 }
 header span {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
  #right {
@@ -148,19 +170,22 @@ header span {
 }
 }
 @media screen and (max-width: 360px) {
-    header{
-        height: auto;
-    }
+    
     #game {
         margin: 0 auto;
+        margin-bottom: 1%;
         flex-direction: column;
         max-width: 95%;
+        height: auto;
     }  
+    #player-vs-robot {
+        flex-direction: column;
+    }
     header h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     header span {
-        font-size: 1.5rem;
+        font-size: 1rem;
 }
 #right {
     margin-left: 0%;

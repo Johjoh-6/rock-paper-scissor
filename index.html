@@ -14,39 +14,43 @@
         <span id="top-head">The winner is first to reach 5 points</span>
     </header>
     <div id="game">
-        <div id="left">
-            <h2 id="player" data-score="0">Player</h2>
-            <div class="game-box" id="rock">
-                <i class="fas fa-hand-rock"></i>
-                <h3>Rock</h3>
+        <div id="player-vs-robot">
+            <div id="left">
+                <h2 id="player" data-score="0">Player</h2>
+                <div class="game-box" id="rock">
+                    <i class="fas fa-hand-rock"></i>
+                    <h3>Rock</h3>
+                </div>
+                <div class="game-box" id="paper">
+                    <i class="fas fa-hand-paper"></i>
+                    <h3>Paper</h3>
+                </div>
+                <div class="game-box" id="scissors">
+                    <i class="fas fa-hand-scissors"></i>
+                    <h3>Scissors</h3>
+                </div>
             </div>
-            <div class="game-box" id="paper">
-                <i class="fas fa-hand-paper"></i>
-                <h3>Paper</h3>
-            </div>
-            <div class="game-box" id="scissors">
-                <i class="fas fa-hand-scissors"></i>
-                <h3>Scissors</h3>
+            <div id="right">
+                <h2 id="robot" data-score="0">Robot</h2>
+                <div class="game-box" id="rock-fixe">
+                    <i class="fas fa-hand-rock"></i>
+                    <h3>Rock</h3>
+                </div>
+                <div class="game-box" id="paper-fixe">
+                    <i class="fas fa-hand-paper"></i>
+                    <h3>Paper</h3>
+                </div>
+                <div class="game-box" id="scissors-fixe">
+                    <i class="fas fa-hand-scissors"></i>
+                    <h3>Scissors</h3>
+                </div>
             </div>
         </div>
-        <div id="right">
-            <h2 id="robot" data-score="0">Robot</h2>
-            <div class="game-box" id="rock-fixe">
-                <i class="fas fa-hand-rock"></i>
-                <h3>Rock</h3>
-            </div>
-            <div class="game-box" id="paper-fixe">
-                <i class="fas fa-hand-paper"></i>
-                <h3>Paper</h3>
-            </div>
-            <div class="game-box" id="scissors-fixe">
-                <i class="fas fa-hand-scissors"></i>
-                <h3>Scissors</h3>
-            </div>
+        <div id="bot-result">
+            <div id="text-area"></div>
+            <div id='refresh' class="hiden">Play Again</div>
         </div>
     </div>
-    <div id="text-area"></div>
-    <div id='refresh' class="hiden">Play Again</div>
 </body>
 <script src="main.js"></script>
 </html>
